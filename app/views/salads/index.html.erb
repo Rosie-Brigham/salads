@@ -39,16 +39,20 @@
             
             <div class="ingredients-list">
               <h4>🥗 Ingredients</h4>
-              <%= salad.ingredients %>
+              <% salad.ingredients.split(',').each do |ingredient| %>
+                <div class="ingredient-item"><%= ingredient.strip %></div>
+              <% end %>
             </div>
 
             <% if salad.instructions_url.present? %>
               <div class="instructions-block">
-                <h4>📝 Recipe Instructions</h4>
-                <%= link_to "View recipe instructions", salad.instructions_url, 
-                    class: "recipe-link", 
-                    target: "_blank",
-                    title: "Open recipe instructions in new tab" %>
+                <div class="instructions-header">
+                  <h4>📝 Recipe Instructions</h4>
+                  <%= link_to "View recipe instructions", salad.instructions_url, 
+                      class: "instructions-link", 
+                      target: "_blank",
+                      title: "Open recipe instructions in new tab" %>
+                </div>
               </div>
             <% end %>
 
