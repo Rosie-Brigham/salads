@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Shambala Salad Share</title>
+  <title>The Big Salad Share Signup</title>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag 'application' %>
   <%= stylesheet_link_tag 'festival' %>
@@ -14,12 +14,12 @@
   <div class="shooting-star"></div>
   <div class="container">
     <div class="festival-header">
-      <h1>Shambala Salad Share</h1>
-      <p>✨ Join the community feast! ✨</p>
+      <h1>The Big Salad Share Signup</h1>
+      <p>✨ Let the feat commence! ✨</p>
     </div>
 
     <% if notice %>
-      <div class="alert alert-success"><%= notice %></div>
+      <div class="alert alert-success"><%= notice.html_safe %></div>
     <% end %>
 
     <% if alert %>
@@ -44,18 +44,6 @@
               <% end %>
             </div>
 
-            <% if salad.instructions_url.present? %>
-              <div class="instructions-block">
-                <div class="instructions-header">
-                  <h4>📝 Recipe Instructions</h4>
-                  <%= link_to "View recipe instructions", salad.instructions_url, 
-                      class: "instructions-link", 
-                      target: "_blank",
-                      title: "Open recipe instructions in new tab" %>
-                </div>
-              </div>
-            <% end %>
-
             <div class="remaining-count">
               <% if salad.remaining_count > 0 %>
                 <%= salad.remaining_count %> out of <%= salad.total_needed %> portions needed
@@ -63,6 +51,18 @@
                 All portions claimed! 🎉
               <% end %>
             </div>
+
+            <% if salad.instructions_url.present? %>
+              <div class="instructions-block">
+                <div class="instructions-header">
+                  <h4>📝 Recipe Instructions</h4>
+                  <%= link_to "View recipe", salad.instructions_url, 
+                      class: "instructions-link", 
+                      target: "_blank",
+                      title: "Open recipe instructions in new tab" %>
+                </div>
+              </div>
+            <% end %>
 
             <% if salad.signups.any? %>
               <div class="signup-list">
@@ -73,7 +73,7 @@
                     <%= button_to 'Remove', salad_signup_path(salad, signup), 
                         method: :delete, 
                         class: 'festival-btn delete',
-                        data: { confirm: 'Are you sure?' } %>
+                        data: { turbo_confirm: 'Are you sure?' } %>
                   </div>
                 <% end %>
               </div>

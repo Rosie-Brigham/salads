@@ -1,3 +1,49 @@
+.salad-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.salad-card {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile devices (up to 767px) */
+@media (max-width: 767px) {
+  .salad-card {
+    width: 100%;
+  }
+
+  .festival-header h1 {
+    font-size: 2rem;
+  }
+
+  .salad-title {
+    font-size: 1.8rem;
+  }
+
+  .salad-content {
+    padding: 1rem;
+  }
+}
+
+/* Tablet and larger */
+@media (min-width: 768px) {
+  .salad-card {
+    width: 100%;
+    max-width: 700px;
+  }
+}
+
 /* app/assets/stylesheets/festival.css */
 
 /* Cosmic background */
@@ -281,6 +327,10 @@ body::after {
   justify-content: space-between;
   align-items: center;
   transition: transform 0.2s ease;
+}
+
+#signup_name {
+  max-width: 90%;
 }
 
 .signup-item:hover {
