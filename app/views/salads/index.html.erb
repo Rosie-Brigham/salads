@@ -1,4 +1,3 @@
-# app/views/salads/index.html.erb
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +6,12 @@
   <%= stylesheet_link_tag 'application' %>
   <%= stylesheet_link_tag 'festival' %>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
   <div class="container">
     <div class="festival-header">
       <h1>Shambala Salad Share</h1>
@@ -23,53 +26,65 @@
       <div class="alert alert-danger"><%= alert %></div>
     <% end %>
 
-    <div class="row">
+    <div class="salad-grid">
       <% @salads.each do |salad| %>
-        <div class="col-md-6">
-          <div class="salad-card">
-            <% if salad.image_url.present? %>
-              <%= image_tag salad.image_url, class: "salad-image", alt: salad.name %>
-            <% end %>
+        <div class="salad-card">
+          <% if salad.image_url.present? %>
+            <%= image_tag salad.image_url, class: "salad-image", alt: salad.name %>
+          <% end %>
+          
+          <div class="salad-content">
+            <h2 class="salad-title"><%= salad.name %></h2>
+            <p class="salad-description"><%= salad.description %></p>
             
-            <div class="salad-content">
-              <h2 class="salad-title"><%= salad.name %></h2>
-              <p class="salad-description"><%= salad.description %></p>
-              
-              <div class="ingredients-list">
-                <h4>🥗 Ingredients:</h4>
-                <%= salad.ingredients %>
-              </div>
+            <div class="ingredients-list">
+              <h4>🥗 Ingredients</h4>
+              <%= salad.ingredients %>
+            </div>
 
-              <div class="remaining-count">
+            <% if salad.instructions_url.present? %>
+              <div class="instructions-block">
+                <h4>📝 Recipe Instructions</h4>
+                <%= link_to "View recipe instructions", salad.instructions_url, 
+                    class: "recipe-link", 
+                    target: "_blank",
+                    title: "Open recipe instructions in new tab" %>
+              </div>
+            <% end %>
+
+            <div class="remaining-count">
+              <% if salad.remaining_count > 0 %>
                 <%= salad.remaining_count %> out of <%= salad.total_needed %> portions needed
-              </div>
-
-              <% if salad.signups.any? %>
-                <div class="signup-list">
-                  <h4>🌟 Wonderful humans bringing this salad:</h4>
-                  <% salad.signups.each do |signup| %>
-                    <div class="signup-item">
-                      <%= signup.name %>
-                      <%= button_to 'Remove', salad_signup_path(salad, signup), 
-                          method: :delete, 
-                          class: 'festival-btn delete',
-                          data: { confirm: 'Are you sure?' } %>
-                    </div>
-                  <% end %>
-                </div>
               <% else %>
-                <p class="text-muted">Be the first to bring this salad! ✨</p>
-              <% end %>
-
-              <% if salad.available? %>
-                <%= form_for [salad, @signup], html: { class: 'signup-form' } do |f| %>
-                  <%= f.text_field :name, placeholder: "Your name", class: "form-control" %>
-                  <%= f.submit "Count me in! 🎉", class: "festival-btn" %>
-                <% end %>
-              <% else %>
-                <p class="text-danger">All portions claimed! 🎉</p>
+                All portions claimed! 🎉
               <% end %>
             </div>
+
+            <% if salad.signups.any? %>
+              <div class="signup-list">
+                <h4>🌟 Wonderful humans bringing this salad</h4>
+                <% salad.signups.each do |signup| %>
+                  <div class="signup-item">
+                    <%= signup.name %>
+                    <%= button_to 'Remove', salad_signup_path(salad, signup), 
+                        method: :delete, 
+                        class: 'festival-btn delete',
+                        data: { confirm: 'Are you sure?' } %>
+                  </div>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="signup-list">
+                <h4>Be the first to bring this salad! ✨</h4>
+              </div>
+            <% end %>
+
+            <% if salad.available? %>
+              <%= form_for [salad, @signup], html: { class: 'signup-form' } do |f| %>
+                <%= f.text_field :name, placeholder: "Your name", class: "form-control" %>
+                <%= f.submit "Count me in! 🎉", class: "festival-btn" %>
+              <% end %>
+            <% end %>
           </div>
         </div>
       <% end %>
