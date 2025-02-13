@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Salad Signup</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application' %>
+</head>
+<body class="container mt-4">
+  <h1 class="mb-4">Salad Signup Sheet</h1>
+  
+  <% if notice %>
+    <div class="alert alert-success"><%= notice %></div>
+  <% end %>
+  
+  <% if alert %>
+    <div class="alert alert-danger"><%= alert %></div>
+  <% end %>
+  
+  <div class="row">
+    <% @salads.each do |salad| %>
+      <div class="col-md-6 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= salad.name %></h5>
+            <p class="card-text"><%= salad.description %></p>
+            <p class="card-text">
+              <small class="text-muted">
+                Remaining: <%= salad.remaining_count %> out of <%= salad.total_needed %>
+              </small>
+            </p>
+            
+            <% if salad.available? %>
+              <%= form_for [@salad, @signup], url: salad_signups_path(salad), html: { class: 'mt-3' } do |f| %>
+                <div class="form-group">
+                  <%= f.text_field :name, class: 'form-control', placeholder: 'Your Name' %>
+                </div>
+                <%= f.submit 'Sign Up!', class: 'btn btn-primary mt-2' %>
+              <% end %>
+            <% else %>
+              <p class="text-danger">All slots filled!</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>
