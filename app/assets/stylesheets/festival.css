@@ -237,6 +237,92 @@ body::after {
   text-shadow: 0 0 10px rgba(255, 217, 61, 0.5);
 }
 
+.welcome-message {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 2rem;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  max-width: 700px;
+}
+
+.welcome-title {
+  color: #ffd93d;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+}
+
+.welcome-content {
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.dietary-notice,
+.safety-instructions,
+.on-the-day {
+  background: rgba(75, 45, 111, 0.3);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.dietary-title,
+.safety-title,
+.on-the-day-title {
+  color: #ffd93d;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.dietary-list,
+.safety-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.dietary-list li,
+.safety-list li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.dietary-list li:before,
+.safety-list li:before {
+  content: "•";
+  color: #ffd93d;
+  position: absolute;
+  left: 0;
+}
+
+.salad-queen {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .welcome-message {
+    padding: 1.5rem;
+  }
+
+  .welcome-title {
+    font-size: 1.5rem;
+  }
+
+  .dietary-title,
+  .safety-title {
+    font-size: 1.2rem;
+  }
+}
+
 .salad-grid {
   display: grid;
   grid-template-columns: 1fr;
