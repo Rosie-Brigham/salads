@@ -20,6 +20,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_13_205822) do
     t.text "description"
     t.text "ingredients"
     t.text "instructions"
+    t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

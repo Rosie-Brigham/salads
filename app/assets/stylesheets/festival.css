@@ -1,0 +1,156 @@
+/* app/assets/stylesheets/festival.css */
+
+body {
+  background: #1a1a1a;
+  color: #fff;
+  font-family: 'Quicksand', sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d1f3d 100%);
+}
+
+.festival-header {
+  text-align: center;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+  background: linear-gradient(45deg, #ff6b6b, #ff9f43, #ffd93d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Pacifico', cursive;
+}
+
+.festival-header h1 {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.festival-header p {
+  font-size: 1.2rem;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.salad-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.salad-card:hover {
+  transform: translateY(-5px);
+}
+
+.salad-image {
+  height: 250px;
+  object-fit: cover;
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.salad-content {
+  padding: 1.5rem;
+}
+
+.salad-title {
+  color: #ffd93d;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-family: 'Pacifico', cursive;
+}
+
+.salad-description {
+  color: #e0e0e0;
+  margin-bottom: 1rem;
+}
+
+.ingredients-list {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.signup-list {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.signup-item {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  padding: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.festival-btn {
+  background: linear-gradient(45deg, #ff6b6b, #ff9f43);
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.festival-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
+}
+
+.festival-btn.delete {
+  background: linear-gradient(45deg, #ff4757, #ff6b81);
+  padding: 0.3rem 0.8rem;
+  font-size: 0.9rem;
+}
+
+.signup-form {
+  margin-top: 1.5rem;
+}
+
+.signup-form input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.signup-form input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.remaining-count {
+  background: linear-gradient(45deg, #ff9f43, #ffd93d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin: 1rem 0;
+}
+
+.alert {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  margin-bottom: 2rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.alert-success {
+  border-left: 4px solid #00b894;
+}
+
+.alert-danger {
+  border-left: 4px solid #ff4757;
+}

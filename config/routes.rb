@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   root 'salads#index'
   resources :salads, only: [:index] do
-    resources :signups, only: [:create]
+    resources :signups, only: [:create, :destroy]
   end
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest

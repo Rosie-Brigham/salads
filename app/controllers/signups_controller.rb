@@ -9,6 +9,12 @@ class SignupsController < ApplicationController
       redirect_to root_path, alert: @signup.errors.full_messages.join(', ')
     end
   end
+
+  def destroy
+    @signup = Signup.find(params[:id])
+    @signup.destroy
+    redirect_to root_path, notice: 'Your signup has been cancelled.'
+  end
   
   private
   
