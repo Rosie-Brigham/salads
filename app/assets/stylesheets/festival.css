@@ -280,33 +280,44 @@ body::after {
 }
 
 .dietary-list,
-.safety-list {
+.safety-list,
+.on-the-day-list {
   list-style: none;
   padding: 0;
   margin: 1rem 0;
 }
 
 .dietary-list li,
-.safety-list li {
+.safety-list li,
+.on-the-day-list li {
   padding: 0.5rem 0;
   padding-left: 1.5rem;
   position: relative;
 }
 
 .dietary-list li:before,
-.safety-list li:before {
+.safety-list li:before,
+.on-the-day-list li:before {
   content: "•";
   color: #ffd93d;
   position: absolute;
   left: 0;
 }
 
-.salad-queen {
+.salad-royalty {
   width: 100%;
-  max-width: 400px;
   margin: 20px auto;
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
 }
+
+.salad-royalty img {
+  width: 30%;
+  border-radius: 5px;
+}
+
+
 
 @media (max-width: 768px) {
   .welcome-message {
