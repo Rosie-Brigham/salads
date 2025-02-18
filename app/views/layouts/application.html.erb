@@ -23,5 +23,33 @@
 
   <body>
     <%= yield %>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('welcome-modal');
+        const closeButton = document.getElementById('close-modal');
+        const showButton = document.getElementById('show-instructions');
+        
+        // Show modal on page load
+        modal.style.display = 'block';
+        
+        // Show modal when show button is clicked
+        showButton.onclick = function() {
+          modal.style.display = 'block';
+        }
+        
+        // Close modal when close button is clicked
+        closeButton.onclick = function() {
+          modal.style.display = 'none';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = 'none';
+          }
+        }
+      });
+    </script>
   </body>
 </html>
