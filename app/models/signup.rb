@@ -1,6 +1,8 @@
 class Signup < ApplicationRecord
     belongs_to :salad
     validates :name, presence: true
+    validates :quantity, presence: true
+
     validate :salad_still_available
     
     private
