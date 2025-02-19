@@ -26,7 +26,7 @@
     
     <div class="welcome-content">
       <p>Thank you for signing up to bring a salad to our big day! On this page you'll find a selection of carefully chosen salads that everyone can enjoy safely. Each recipe is specifically designed to be inclusive for all our guests.
-      Whilst we will be serving a hog roast, will a pulled jackfruit vegan alternatice, we wanted to have a good seleciton of salads for all folks to enjoy</p>
+      Whilst we will be serving a hog roast, as well as a pulled jackfruit vegan alternative, we wanted to have a good seleciton of salads for all folks to enjoy</p>
     </div>
 
     <div class="dietary-notice">
@@ -44,7 +44,7 @@
       <h3 class="safety-title">🔍 Safety Instructions</h3>
       <p>Please ensure you:</p>
       <ul class="safety-list">
-        <li>Follow the recipe exactly as provided</li>
+        <li>Follow the recipe <span class="important">exactly</span> as provided</li>
         <li>Prepare your salad in a clean environment</li>
         <li>Avoid cross-contamination with any of the above allergens during preparation</li>
       </ul>
@@ -54,9 +54,10 @@
       <h3 class="on-the-day-title">✨ On the day!</h3>
       <p>When you arrive at the venue:</p>
       <ul class="on-the-day-list">
-        <li>Have you salad in an approrait tupperware</li>
-        <li>Please look for the Lords Commandant of Salads (persons in charge of salads) who will be loitering in the silk mill by the kitchen to take your beautifully prepared salads</li>
-        <li>Nai, Cam and Calumn are our Lords Commandand of Salads - look out for them! They will take your salad and organise things from there </li>
+        <li>Have your salad in appropriate <span class="important">labelled</span> tupperware</li>
+        <li>Please look for the Lord Commandant's of Salads (persons in charge of salads). They will be loitering in the Silk Mill by the kitchen to take your beautifully prepared salads</li>
+        <li>Nai, Cam and Calumn are our Lord Commandant's of Salads - look out for them! They will take your salad and organise things from there </li>
+        <li>If all the salad slots have been taken, but you still want to help out - let us know!</li>
         <span class="salad-royalty">
           <%= image_tag "nai.jpg", alt: "Nai, the Salad Queen", class: "salad-queen" %>
           <%= image_tag "camncallum.jpg", alt: "Cam, the Salad King", class: "salad-kings" %>
@@ -116,11 +117,13 @@
                 <h4>🌟 Wonderful humans bringing this salad</h4>
                 <% salad.signups.each do |signup| %>
                   <div class="signup-item">
-                    <%= signup.name %>
+                    <%= signup.name %> 
+                    <span class="portion-count">
+                      (<%= pluralize(signup.quantity, 'portion') %>)
+                    </span>
                     <%= button_to 'Remove', salad_signup_path(salad, signup), 
-                        method: :delete, 
-                        class: 'festival-btn delete',
-                        data: { turbo_confirm: 'Are you sure?' } %>
+    method: :delete, 
+    class: 'festival-btn delete confirm-delete' %>
                   </div>
                 <% end %>
               </div>
@@ -133,6 +136,13 @@
             <% if salad.available? %>
               <%= form_for [salad, @signup], html: { class: 'signup-form' } do |f| %>
                 <%= f.text_field :name, placeholder: "Your name", class: "form-control" %>
+                <div class="quantity-selector">
+                  <%= f.label :quantity, "Number of portions:" %>
+                  <%= f.select :quantity, 
+                      options_for_select((1..[salad.remaining_count, 5].min).to_a),
+                      {}, 
+                      class: "form-control" %>
+                </div>
                 <%= f.submit "Count me in! 🎉", class: "festival-btn" %>
               <% end %>
             <% end %>
@@ -144,17 +154,18 @@
   <div id="welcome-modal" class="modal">
     <div class="modal-content">
       <h2>🎉 Welcome to the Big Salad Share! 🥗</h2>
-      <p>A HUGE thank you volunteering to help with salad creation for our celebration. 
+      <p>A HUGE thank you for volunteering to help with salad creation for our celebration. 
       Weddings are all about coming together, and having everyone contribute to the feast makes it extra special. 
       We really appreciate you being part of it!</p>
       <p>A few quick things to note:</p>
       <ul>
         <li>Please use this website to choose a salad you'd like to bring</li>
-        <li>Enter your name into the box on the signup, you are now signed up</li>
-        <li>Download the receipie for the salad under the signup box</li>
-        <li>Be mindful of allergies (no nuts or mustard!)</li>
-        <li>Ensure you label any tupperware you bring with your name!</li>
-        <li>On the day, find the Lords Commandant of Salads when you arrive to give your salad to, they will take it from there</li>
+        <li>Enter your name into the box under the salad of your choosing and click the button</li>
+        <li>You can volunteer for more than one type of salad if you like - just enter your name under the others and click the button</li>
+        <li>You can also make more than one portion (we understand it may be inconvenient hunting down only 1/4 of a teaspoon of lemon juice) 
+        - if you would like to increase the number of salad portions you are providing, just increase the quantity in the box</li>
+        <li>Please do not deviate from the recipes - they have been tailored to account for the differing dietary requirements of the guests</li>
+        <li>Download the recipe for the salad, located under the signup box</li>
         <li>Please do not bring any wedding gifts - your salad is your gift!</li>
       </ul>
       <button id="close-modal" class="festival-btn">Let's Get Started! 🌟</button>

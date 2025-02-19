@@ -3,10 +3,10 @@ class SignupsController < ApplicationController
     @salad = Salad.find(params[:salad_id])
     @signup = @salad.signups.build(signup_params)
     
-    if @signup.save
-      redirect_to root_path, notice: 'Thanks for signing up to bring a salad!'
+    if @signup.quantity <= @salad.remaining_count && @signup.save
+      redirect_to root_path, notice: "Thanks for signing up to bring #{@signup.quantity} #{'portion'.pluralize(@signup.quantity)} of #{@salad.name}! 🎉"
     else
-      redirect_to root_path, alert: @signup.errors.full_messages.join(', ')
+      redirect_to root_path, alert: "Sorry, couldn't sign you up for that many portions!"
     end
   end
 
@@ -19,6 +19,6 @@ class SignupsController < ApplicationController
   private
   
   def signup_params
-    params.require(:signup).permit(:name)
+    params.require(:signup).permit(:name, :quantity)
   end
 end

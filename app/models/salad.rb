@@ -4,7 +4,7 @@ class Salad < ApplicationRecord
   validates :total_needed, presence: true, numericality: { greater_than: 0 }
   
   def remaining_count
-    total_needed - signups.count
+    total_needed - signups.sum(:quantity)
   end
   
   def available?

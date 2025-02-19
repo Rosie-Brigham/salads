@@ -19,9 +19,18 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%#= Hello Mae, hello Nate. %>
   </head>
 
   <body>
+    <% if notice %>
+      <div class="alert alert-success"><%= notice %></div>
+    <% end %>
+
+    <% if alert %>
+      <div class="alert alert-danger"><%= alert %></div>
+    <% end %>
+
     <%= yield %>
 
     <script>
@@ -30,23 +39,36 @@
         const closeButton = document.getElementById('close-modal');
         const showButton = document.getElementById('show-instructions');
         
-        // Show modal on page load
-        modal.style.display = 'block';
+        // Only show modal on first visit
+        if (!localStorage.getItem('modalShown')) {
+            modal.style.display = 'block';
+            localStorage.setItem('modalShown', 'true');
+        }
         
         // Show modal when show button is clicked
         showButton.onclick = function() {
-          modal.style.display = 'block';
+            modal.style.display = 'block';
         }
         
         // Close modal when close button is clicked
         closeButton.onclick = function() {
-          modal.style.display = 'none';
+            modal.style.display = 'none';
         }
         
         // Close modal when clicking outside
         window.onclick = function(event) {
-          if (event.target == modal) {
-            modal.style.display = 'none';
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    });
+    </script>
+
+    <script>
+      document.addEventListener('click', function(e) {
+        if (e.target.closest('.confirm-delete')) {
+          if (!confirm('Are you sure you want to remove this signup?')) {
+            e.preventDefault();
           }
         }
       });
