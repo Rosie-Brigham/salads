@@ -122,8 +122,8 @@
                       (<%= pluralize(signup.quantity, 'portion') %>)
                     </span>
                     <%= button_to 'Remove', salad_signup_path(salad, signup), 
-    method: :delete, 
-    class: 'festival-btn delete confirm-delete' %>
+                        method: :delete, 
+                        class: 'festival-btn delete confirm-delete' %>
                   </div>
                 <% end %>
               </div>
@@ -135,7 +135,7 @@
 
             <% if salad.available? %>
               <%= form_for [salad, @signup], html: { class: 'signup-form' } do |f| %>
-                <%= f.text_field :name, placeholder: "Your name", class: "form-control" %>
+                <%= f.text_field :name, placeholder: "Your full name", class: "form-control" %>
                 <div class="quantity-selector">
                   <%= f.label :quantity, "Number of portions:" %>
                   <%= f.select :quantity, 

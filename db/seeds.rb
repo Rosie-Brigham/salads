@@ -3,15 +3,15 @@ salads = [
   {
     name: 'Tabbouleh',
     description: 'A lovely fresh and healthy salad that uses mostly herbs with a little bulgur wheat',
-    ingredients: '50g bulgur wheat, 50g flat-leaf parsley (chopped), 50g mint (chopped), 200g ripe tomatoes (deseeded and diced), 3 spring onions (finely sliced), juice 1 lemon, 3 tbsp olive oil',
-    total_needed: 12,
+    ingredients: '150g bulgur wheat, 150g flat-leaf parsley chopped, 150g mint chopped, 600g ripe tomatoes deseeded and diced, 9 spring onions finely sliced, juice 3 lemon, 9 tbsp olive oil,',
+    total_needed: 10,
     image_url: 'https://cdn.loveandlemons.com/wp-content/uploads/2022/08/tabbouleh-1.jpg',
     instructions_url: 'https://docs.google.com/document/d/1H7rZT8yyT5b8VVwoRkcjjsdGzhu8s0TtoU498wMeUIk/edit?usp=sharing'
   },
   {
     name: 'Roasted sweet potato',
     description: 'Sweet and tangy roasted sweet potato salad - lovely and moreish',
-    ingredients: '2 sweet potatoes (about 850g in total), 3 tbsp olive oil, 35g pecan nuts, 4 spring onions (roughly chopped), 4 tbsp roughly chopped flat-leaf parsley, 2 tbsp roughly chopped coriander, ¼ tsp dried chilli flakes, 35g sultanas, salt and pepper',
+    ingredients: '4 sweet potatoes (about 1.6kg), 6 tbsp olive oil, 70g Sunflower seed, 8 spring onions, roughly chopped, 8 tbsp roughly chopped flat-leaf parsley, 4 tbsp roughly chopped coriander, ½  tsp dried chilli flakes, 70g sultanas, 8 tbsp olive oil, 4 tbsp maple syrup olive oil, 2 tbsp sherry vinegar, 2 tbsp lemon juice , 4 orange juice, 4 tsp grated fresh ginger, 1 tsp ground cinnamon , ',
     total_needed: 12,
     image_url: 'https://ottolenghi.co.uk/cdn/shop/files/Roasted_sweet_potato_with_pecan_and_maple.jpg?v=1716838382&width=1000',
     instructions_url: 'https://docs.google.com/document/d/18UWesHnUSjrRTHrJAhexsmTWrdDbLN94h9dygjzn3qM/edit?usp=sharing'
